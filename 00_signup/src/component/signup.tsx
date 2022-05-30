@@ -1,5 +1,5 @@
 import { useState } from 'react'
-import SignUpForm from './signUpForm'
+import SignUpForm from './signUpForm/signUpForm'
 import SignUpSuccess from './signUpSuccess';
 
 const SignUp = () => {
