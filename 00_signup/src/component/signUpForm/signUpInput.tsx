@@ -1,5 +1,5 @@
 import React, {useState} from 'react'
-import {user } from '../../type/userInfo'
+import { user } from '../../type/userInfo'
 import '../../css/signUpInput.css'
 
 type ItemProps = {

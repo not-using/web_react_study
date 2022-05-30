@@ -1,7 +1,8 @@
 import React, { useState } from 'react'
-import { emailValidator, userNameValidator } from '../../policy/signUpPolicy'
+import { emailValidator, signUpSubmitValidator, userNameValidator, phoneValidator } from '../../policy/signUpPolicy'
 import SignUpInput from './signUpInput'
 import SignUpPassword from './signUpPassword'
+import SignUpUserAgree from './signUpUserAgree'
 
 type signupFormProps = {
   setName: (a:string) => void;
@@ -11,15 +12,18 @@ const SignUpForm: React.FC<signupFormProps> = ({setName}) => {
   const [userInfo, setUserInfo] = useState({
     email:'',
     password: '',
+    pwCheck: false,
     userName: '',
     phone: '',
     recommender: '',
-    agreement: false,
+    agreement1: false,
+    agreement2: false,
   });
 
   const onSignUp = (e:React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    setName(userInfo.userName);
+    if (signUpSubmitValidator(userInfo))
+      setName(userInfo.userName);
   }
 
   return (
@@ -37,6 +41,14 @@ const SignUpForm: React.FC<signupFormProps> = ({setName}) => {
         setItem={setUserInfo} 
         />
       <SignUpInput 
+        title="휴대폰 연락처"
+        currentInfo={userInfo} 
+        updatedItemName="phone" 
+        setItem={setUserInfo} 
+        validator={phoneValidator} 
+        errorMessage="연락처 형식이 맞지 않습니다" 
+      />
+      <SignUpInput 
         title="유저이름"
         currentInfo={userInfo} 
         updatedItemName="userName" 
@@ -51,6 +63,10 @@ const SignUpForm: React.FC<signupFormProps> = ({setName}) => {
         setItem={setUserInfo} 
         validator={userNameValidator} 
         errorMessage="유저이름 형식이 맞지 않습니다" 
+      />
+      <SignUpUserAgree
+        currentInfo={userInfo}
+        setItem={setUserInfo}
       />
       <input type="submit"></input>
     </form>

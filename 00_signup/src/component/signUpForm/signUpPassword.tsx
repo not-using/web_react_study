@@ -1,5 +1,5 @@
-import React, {useState} from 'react'
-import {user } from '../../type/userInfo'
+import React, { useState } from 'react'
+import { user } from '../../type/userInfo'
 import { passwordValidator } from '../../policy/signUpPolicy'
 
 type ItemProps = {
@@ -9,14 +9,18 @@ type ItemProps = {
 
 const SignUpPassword :React.FC<ItemProps> = ({currentInfo, setItem}) => {
   const [valid, setValid] = useState(true);
-  const [equal, setEqual] = useState(true);
   const onChangePassword = (e:React.ChangeEvent<HTMLInputElement>) =>{
     const updateItem = {  "password": e.currentTarget.value };
     setItem({ ...currentInfo, ...updateItem });
     setValid(passwordValidator(e.currentTarget.value));
   } 
+
+  const [equal, setEqual] = useState(true);
   const isEqualPassword = (e:React.ChangeEvent<HTMLInputElement>) => {
-    setEqual(currentInfo.password === e.currentTarget.value);
+    const result = currentInfo.password === e.currentTarget.value;
+    setEqual(result);
+    const updateItem = {  "pwCheck": result };
+    setItem({ ...currentInfo, ...updateItem });
   }
   return (
     <>
