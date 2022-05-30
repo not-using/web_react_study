@@ -1,7 +1,7 @@
 
 import { Routes, Route } from 'react-router-dom'
 import Welcome from './component/welcome'
-import SignUp from './component/signup'
+import SignUp from './component/signUp'
 
 const Router = () => {
   return (
