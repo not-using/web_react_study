@@ -1,6 +1,6 @@
 import { useState } from 'react'
-import SignUpForm from './signUpForm/signUpForm'
-import SignUpSuccess from './signUpSuccess';
+import SignUpForm from '../component/signUpForm/signUpForm'
+import SignUpSuccess from '../component/signUpSuccess';
 
 const SignUp = () => {
   const [submitedName, setSubmitedName] = useState("");
