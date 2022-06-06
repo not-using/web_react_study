@@ -12,12 +12,13 @@ const SignUpUserAgree:React.FC<signUpAgreeProps> = ({currentInfo, setItem}) => {
   const [opt, setOpt] = useState(false);
 
   const allChecked = (e:React.ChangeEvent<HTMLInputElement>) => {
-    setReq1(true);
-    setReq2(true);
-    setOpt(true);
+    const value = req1 && req2 && opt ? false : true;
+    setReq1(value);
+    setReq2(value);
+    setOpt(value);
     const updateItem = {
-      'agreement1' : true, 
-      'agreement2': true 
+      'agreement1' : value, 
+      'agreement2': value 
     };
     setItem({ ...currentInfo, ...updateItem });
   }
