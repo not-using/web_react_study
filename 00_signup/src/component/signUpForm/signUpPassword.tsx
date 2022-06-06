@@ -10,18 +10,23 @@ type ItemProps = {
 const SignUpPassword :React.FC<ItemProps> = ({currentInfo, setItem}) => {
   const [valid, setValid] = useState(true);
   const onChangePassword = (e:React.ChangeEvent<HTMLInputElement>) =>{
-    const updateItem = {  'password': e.currentTarget.value };
+    const updateItem = { 'password': e.currentTarget.value };
     setItem({ ...currentInfo, ...updateItem });
     setValid(passwordValidator(e.currentTarget.value));
-  } 
+  }
 
   const [equal, setEqual] = useState(true);
-  const isEqualPassword = (e:React.ChangeEvent<HTMLInputElement>) => {
-    const result = currentInfo.password === e.currentTarget.value;
-    setEqual(result);
-    const updateItem = {  'pwCheck': result };
+  const onChangePwCheck = (e:React.ChangeEvent<HTMLInputElement>) => {
+    const updateItem = { 'pwCheck': valid };
     setItem({ ...currentInfo, ...updateItem });
   }
+  const onFocusPwCheck = (e:React.ChangeEvent<HTMLInputElement>) => {
+    setEqual(true);
+  }
+  const onBlurPwCheck = (e:React.ChangeEvent<HTMLInputElement>) => {
+    setEqual(currentInfo.password === e.currentTarget.value);
+  }
+
   return (
     <>
       <div className='sign-input'>
@@ -31,7 +36,7 @@ const SignUpPassword :React.FC<ItemProps> = ({currentInfo, setItem}) => {
       </div>
       <div className='sign-input'>
         <label className='sign-input__title' htmlFor='password2'>비밀번호 확인</label>
-        <input type='password' onChange={isEqualPassword}  className='sign-input__box' id='password2'></input>
+        <input type='password' onChange={onChangePwCheck} onBlur={onBlurPwCheck} onFocus={onFocusPwCheck} className='sign-input__box' id='password2'></input>
         <label className='sign-input__error' htmlFor='password2'>{!equal && `비밀번호와 일치하지 않습니다`}</label>
       </div>
     </>
