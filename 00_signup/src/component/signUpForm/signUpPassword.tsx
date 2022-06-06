@@ -32,12 +32,12 @@ const SignUpPassword :React.FC<ItemProps> = ({currentInfo, setItem}) => {
       <div className='sign-input'>
         <label className='sign-input__title' htmlFor='password'>비밀번호</label>
         <input type='password' onChange={onChangePassword} className='sign-input__box' id='password'></input>
-        <label className='sign-input__error' htmlFor='password'>{!valid && `영문자 및 숫자, 특수문자 포함 8 ~ 42자로 설정해주세요`}</label>
+        {!valid && <label className='sign-input__error' htmlFor='password'>영문자 및 숫자, 특수문자 포함 8 ~ 42자로 설정해주세요</label>}
       </div>
       <div className='sign-input'>
         <label className='sign-input__title' htmlFor='password2'>비밀번호 확인</label>
         <input type='password' onChange={onChangePwCheck} onBlur={onBlurPwCheck} onFocus={onFocusPwCheck} className='sign-input__box' id='password2'></input>
-        <label className='sign-input__error' htmlFor='password2'>{!equal && `비밀번호와 일치하지 않습니다`}</label>
+        {!equal && <label className='sign-input__error' htmlFor='password2'>비밀번호와 일치하지 않습니다</label>}
       </div>
     </>
   )

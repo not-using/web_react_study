@@ -29,7 +29,7 @@ const SignUpInput :React.FC<ItemProps> = ({title, currentInfo, updatedItemName, 
     <div className='sign-input'>
       <label className='sign-input__title' htmlFor={updatedItemName}>{title}</label>
       <input type='text' onBlur={onBlur} onChange={onChange} onFocus={onFocus} id={updatedItemName} className='sign-input__box'></input>
-      <label className='sign-input__error' htmlFor={updatedItemName}>{!valid && errorMessage}</label>
+      {!valid && <label className='sign-input__error' htmlFor={updatedItemName}>{errorMessage}</label>}
     </div>
   )
 }
