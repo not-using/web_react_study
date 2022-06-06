@@ -19,10 +19,10 @@ const SignUpInput :React.FC<ItemProps> = ({title, currentInfo, updatedItemName, 
     setValid(validator(e.currentTarget.value));
   }  
   return (
-    <div className="sign-input">
-      <span className="sign-input__title">{title}</span>
-      <input type="text" onChange={onChangeItem}  className="sign-input__box"></input>
-      <p className="sign-input__error">{!valid && errorMessage}</p>
+    <div className='sign-input'>
+      <label className='sign-input__title' htmlFor={updatedItemName}>{title}</label>
+      <input type='text' onChange={onChangeItem} id={updatedItemName} className='sign-input__box'></input>
+      <label className='sign-input__error' htmlFor={updatedItemName}>{!valid && errorMessage}</label>
     </div>
   )
 }
