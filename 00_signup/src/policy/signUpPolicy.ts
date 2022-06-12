@@ -1,27 +1,31 @@
 import { user } from '../type/userInfo'
 
+const emailReg = RegExp(/^[0-9a-zA-Z]\w*@[0-9a-z]\w*\.[a-z]{2,3}$/);
+const passwordReg = RegExp(/[\w!@#$%^&*.]{8,42}/);
+const phoneReg = RegExp(/\d{2,3}[- ]?\d{3,4}[- ]?\d{4}/);
+const userNameReg = RegExp(/\w{2,10}/)
+
 export const emailValidator = (email: string) => {
-  if (!email.includes('@') || !email.includes('.'))
-    return false;
-  return true;
+  return emailReg.test(email);
 }
 
 export const passwordValidator = (password:string) => {
-    if (password.length < 8 || password.length > 20)
-        return false;
-    return true;
+  return passwordReg.test(password);
 }
 
 export const userNameValidator = (name:string) => {
-  return true;
+  return userNameReg.test(name);
 }
 
 export const phoneValidator = (phone:string) => {
-  return true;
+  return phoneReg.test(phone);
 }
 
 export const signUpSubmitValidator = (user:user) => {
-  if (!user.email || !user.password || !user.pwCheck || !user.phone || !user.userName || !user.agreement1)
-    return false;
-  return true;
+  return ( emailValidator(user.email) 
+           && passwordValidator(user.password) 
+           && phoneValidator(user.phone) 
+           && userNameValidator(user.userName) 
+           && user.pwCheck 
+           && user.agreement1 );
 }

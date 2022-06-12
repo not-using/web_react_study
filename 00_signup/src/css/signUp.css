@@ -1,0 +1,26 @@
+.sign-up {
+  width: 500px;
+  margin: auto;
+  height: 80%;
+  background-color: white;
+}
+
+.sign-up h1 {
+  width: 80px;
+  margin: 20px auto 30px;
+}
+
+.sign-agree {
+  margin: 20px 40px;
+}
+
+.sign-agree__check {
+  display: block;
+}
+
+.sign-up__submit {
+  display: block;
+  margin: auto;
+  height: 30px;
+  width: 100px;
+}

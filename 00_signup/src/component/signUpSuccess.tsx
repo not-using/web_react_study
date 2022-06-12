@@ -1,7 +1,7 @@
 import React from 'react'
 
 type signUpSuccessProps = {
-    userName: string;
+  userName: string;
 }
 
 

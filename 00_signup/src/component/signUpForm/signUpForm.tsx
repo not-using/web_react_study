@@ -29,46 +29,46 @@ const SignUpForm: React.FC<signupFormProps> = ({setName}) => {
   return (
     <form onSubmit={onSignUp}>
       <SignUpInput 
-        title="이메일"
+        title='이메일'
         currentInfo={userInfo} 
-        updatedItemName="email" 
+        updatedItemName='email' 
         setItem={setUserInfo} 
         validator={emailValidator} 
-        errorMessage="이메일 형식이 맞지 않습니다" 
+        errorMessage='이메일 형식이 맞지 않습니다' 
       />
       <SignUpPassword
         currentInfo={userInfo}
         setItem={setUserInfo} 
         />
       <SignUpInput 
-        title="휴대폰 연락처"
+        title='휴대폰 연락처'
         currentInfo={userInfo} 
-        updatedItemName="phone" 
+        updatedItemName='phone' 
         setItem={setUserInfo} 
         validator={phoneValidator} 
-        errorMessage="연락처 형식이 맞지 않습니다" 
+        errorMessage='연락처 형식이 맞지 않습니다' 
       />
       <SignUpInput 
-        title="유저이름"
+        title='유저이름'
         currentInfo={userInfo} 
-        updatedItemName="userName" 
+        updatedItemName='userName' 
         setItem={setUserInfo} 
         validator={userNameValidator} 
-        errorMessage="유저이름 형식이 맞지 않습니다" 
+        errorMessage='유저이름 형식이 맞지 않습니다' 
       />
       <SignUpInput 
-        title="추천인 (선택)"
+        title='추천인 (선택)'
         currentInfo={userInfo} 
-        updatedItemName="recommender" 
+        updatedItemName='recommender' 
         setItem={setUserInfo} 
         validator={userNameValidator} 
-        errorMessage="유저이름 형식이 맞지 않습니다" 
+        errorMessage='유저이름 형식이 맞지 않습니다' 
       />
       <SignUpUserAgree
         currentInfo={userInfo}
         setItem={setUserInfo}
       />
-      <input type="submit"></input>
+      <input type='submit' className='sign-up__submit'></input>
     </form>
   )
 }
