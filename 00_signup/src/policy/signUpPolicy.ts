@@ -27,5 +27,5 @@ export const signUpSubmitValidator = (user:user) => {
            && phoneValidator(user.phone) 
            && userNameValidator(user.userName) 
            && user.pwCheck 
-           && user.agreement1 );
+           && user.requiredAgreement );
 }

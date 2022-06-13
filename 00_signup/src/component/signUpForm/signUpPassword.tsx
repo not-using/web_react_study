@@ -35,9 +35,9 @@ const SignUpPassword :React.FC<ItemProps> = ({currentInfo, setItem}) => {
         {!valid && <label className='sign-input__error' htmlFor='password'>영문자 및 숫자, 특수문자 포함 8 ~ 42자로 설정해주세요</label>}
       </div>
       <div className='sign-input'>
-        <label className='sign-input__title' htmlFor='password2'>비밀번호 확인</label>
-        <input type='password' onChange={onChangePwCheck} onBlur={onBlurPwCheck} onFocus={onFocusPwCheck} className='sign-input__box' id='password2'></input>
-        {!equal && <label className='sign-input__error' htmlFor='password2'>비밀번호와 일치하지 않습니다</label>}
+        <label className='sign-input__title' htmlFor='pwCheck'>비밀번호 확인</label>
+        <input type='password' onChange={onChangePwCheck} onBlur={onBlurPwCheck} onFocus={onFocusPwCheck} className='sign-input__box' id='pwCheck'></input>
+        {!equal && <label className='sign-input__error' htmlFor='pwCheck'>비밀번호와 일치하지 않습니다</label>}
       </div>
     </>
   )

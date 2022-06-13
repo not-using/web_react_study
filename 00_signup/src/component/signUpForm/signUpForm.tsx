@@ -16,8 +16,8 @@ const SignUpForm: React.FC<signupFormProps> = ({setName}) => {
     userName: '',
     phone: '',
     recommender: '',
-    agreement1: false,
-    agreement2: false,
+    requiredAgreement: false,
+    optionalAgreement: false,
   });
 
   const onSignUp = (e:React.FormEvent<HTMLFormElement>) => {
