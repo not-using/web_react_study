@@ -15,6 +15,9 @@ type ItemProps = {
 const SignUpInput :React.FC<ItemProps> = ({title, currentInfo, updatedItemName, setItem, pattern, errorMessage, isRequired}) => {
   const [valid, setValid] = useState(true);
   const onChange = (e:React.ChangeEvent<HTMLInputElement>) => {
+    const element = e.currentTarget;
+    if (updatedItemName === 'phone')
+      element.value = element.value.replace(/[^0-9]/g, '');
     setValid(pattern.test(e.currentTarget.value));
   }
   const onFocus = (e:React.ChangeEvent<HTMLInputElement>) => {
