@@ -1,8 +1,7 @@
 import React, { useState } from 'react'
 import { user } from '../../type/userInfo'
 import { passwordReg, passwordValidator } from '../../policy/signUpPolicy'
-
-const passwordErrorMessage = `영문자 및 숫자, 특수문자 포함 8 ~ 42자로 설정해주세요`;
+import { passwordErrorMessage, passwordNotEqualMessage } from '../../utils/signUp.messageLiteral'
 
 type ItemProps = {
   currentInfo: user;
@@ -61,7 +60,7 @@ const SignUpPassword :React.FC<ItemProps> = ({currentInfo, setItem}) => {
           onBlur={onBlurPwCheck} 
           required
         />
-        {!equal && <label className='sign-input__error' htmlFor='pwCheck'>비밀번호와 일치하지 않습니다</label>}
+        {!equal && <label className='sign-input__error' htmlFor='pwCheck'>{passwordNotEqualMessage}</label>}
       </div>
     </>
   )

@@ -1,9 +1,6 @@
 import React, { useState } from 'react'
 import { user } from '../../type/userInfo'
-
-const termMessage = `이 페이지는 페이지 구현 연습용일 뿐입니다`;
-const privacyMessage = `개인정보를 수집하지는 않지만 반드시 동의해주셔야 합니다`;
-const marketingMessage = `마케팅 용도로 연락드릴 수도 있는 선택 약관입니다`;
+import { termMessage, privacyMessage, marketingMessage } from '../../utils/signUp.messageLiteral' 
 
 type signUpAgreeProps = {
   currentInfo: user;

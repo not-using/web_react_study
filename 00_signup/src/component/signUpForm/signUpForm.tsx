@@ -1,8 +1,9 @@
 import React, { useState } from 'react'
-import { emailReg, phoneReg, userNameReg, signUpSubmitValidator } from '../../policy/signUpPolicy'
 import SignUpInput from './signUpInput'
 import SignUpPassword from './signUpPassword'
 import SignUpUserAgree from './signUpUserAgree'
+import { emailReg, phoneReg, userNameReg, signUpSubmitValidator } from '../../policy/signUpPolicy'
+import { emailErrorMessage, phoneErrorMessage, userNameErrorMessage } from '../../utils/signUp.messageLiteral'
 
 type signupFormProps = {
   setName: (a:string) => void;
@@ -34,7 +35,7 @@ const SignUpForm: React.FC<signupFormProps> = ({setName}) => {
         updatedItemName='email' 
         setItem={setUserInfo} 
         pattern={emailReg} 
-        errorMessage='이메일 형식이 맞지 않습니다'
+        errorMessage={emailErrorMessage}
         isRequired={true}
       />
       <SignUpPassword
@@ -47,7 +48,7 @@ const SignUpForm: React.FC<signupFormProps> = ({setName}) => {
         updatedItemName='phone' 
         setItem={setUserInfo} 
         pattern={phoneReg} 
-        errorMessage='010으로 시작하는 휴대폰번호 숫자만 입력해주세요' 
+        errorMessage={phoneErrorMessage}
         isRequired={true}
       />
       <SignUpInput 
@@ -56,7 +57,7 @@ const SignUpForm: React.FC<signupFormProps> = ({setName}) => {
         updatedItemName='userName' 
         setItem={setUserInfo} 
         pattern={userNameReg} 
-        errorMessage='2~10자 사이의 영문자만 가능합니다' 
+        errorMessage={userNameErrorMessage} 
         isRequired={true}
       />
       <SignUpInput 
@@ -65,7 +66,7 @@ const SignUpForm: React.FC<signupFormProps> = ({setName}) => {
         updatedItemName='recommender' 
         setItem={setUserInfo} 
         pattern={userNameReg} 
-        errorMessage='2~10자 사이의 영문자만 가능합니다' 
+        errorMessage={userNameErrorMessage}
         isRequired={false}
       />
       <SignUpUserAgree
