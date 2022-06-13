@@ -6,8 +6,8 @@ const privacyMessage = `개인정보를 수집하지는 않지만 반드시 동�
 const marketingMessage = `마케팅 용도로 연락드릴 수도 있는 선택 약관입니다`;
 
 type signUpAgreeProps = {
-    currentInfo: user;
-    setItem: (a:user) => void;
+  currentInfo: user;
+  setItem: (a:user) => void;
 }
 
 const SignUpUserAgree:React.FC<signUpAgreeProps> = ({currentInfo, setItem}) => {
@@ -20,27 +20,35 @@ const SignUpUserAgree:React.FC<signUpAgreeProps> = ({currentInfo, setItem}) => {
     setTermAgree(value);
     setPrivacyAgree(value);
     setMarketingAgree(value);
-    const updateItem = {
-      'requiredAgreement' : value, 
-      'optionalAgreement': value 
-    };
-    setItem({ ...currentInfo, ...updateItem });
+    setItem({ 
+      ...currentInfo, 
+      requiredAgreement : value, 
+      optionalAgreement: value
+    });
   }
   const onChangeTermAgreement = (e: React.ChangeEvent<HTMLInputElement>) => {
-    const updateItem = { 'requiredAgreement': !termAgree && privacyAgree };
-    setItem({ ...currentInfo, ...updateItem });
+    if ((!termAgree && privacyAgree) !== currentInfo.requiredAgreement) 
+      setItem({ 
+        ...currentInfo, 
+        requiredAgreement: (!termAgree && privacyAgree) 
+      });
     setTermAgree(!termAgree);
   }
 
   const onChangePrivacyAgreement = (e: React.ChangeEvent<HTMLInputElement>) => {
-    const updateItem = { 'requiredAgreement': termAgree && !privacyAgree };
-    setItem({ ...currentInfo, ...updateItem });
+    if ((termAgree && !privacyAgree) !== currentInfo.requiredAgreement) 
+      setItem({ 
+        ...currentInfo, 
+        requiredAgreement: (termAgree && !privacyAgree) 
+      });
     setPrivacyAgree(!privacyAgree);
   }
 
   const onChangeMarketingAgreement = (e: React.ChangeEvent<HTMLInputElement>) => {
-    const updateItem = { 'optionalAgreement': !marketingAgree };
-    setItem({ ...currentInfo, ...updateItem });
+    setItem({ 
+      ...currentInfo, 
+      optionalAgreement: !marketingAgree 
+    });
     setMarketingAgree(!marketingAgree);
   }
   return (
