@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import { user } from '../../type/userInfo'
+import { user } from '../../utils/userInfo.type'
 import { termMessage, privacyMessage, marketingMessage } from '../../utils/signUp.messageLiteral' 
 
 type signUpAgreeProps = {

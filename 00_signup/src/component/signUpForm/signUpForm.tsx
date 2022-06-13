@@ -2,7 +2,7 @@ import React, { useState } from 'react'
 import SignUpInput from './signUpInput'
 import SignUpPassword from './signUpPassword'
 import SignUpUserAgree from './signUpUserAgree'
-import { emailReg, phoneReg, userNameReg, signUpSubmitValidator } from '../../policy/signUpPolicy'
+import { emailReg, phoneReg, userNameReg, signUpSubmitValidator } from '../../utils/signUp.policy'
 import { emailErrorMessage, phoneErrorMessage, userNameErrorMessage } from '../../utils/signUp.messageLiteral'
 
 type signupFormProps = {

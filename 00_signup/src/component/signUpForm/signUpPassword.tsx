@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
-import { user } from '../../type/userInfo'
-import { passwordReg, passwordValidator } from '../../policy/signUpPolicy'
+import { user } from '../../utils/userInfo.type'
+import { passwordReg, passwordValidator } from '../../utils/signUp.policy'
 import { passwordErrorMessage, passwordNotEqualMessage } from '../../utils/signUp.messageLiteral'
 
 type ItemProps = {
