@@ -17,10 +17,10 @@ const SignUpInput :React.FC<ItemProps> = ({title, currentInfo, updatedItemName, 
     setValid(validator(e.currentTarget.value));
   }
   const onBlur = (e:React.ChangeEvent<HTMLInputElement>) => {
-    const isValid = validator(e.currentTarget.value);
-    setValid(isValid);
-    if (isValid)
-      setItem({ ...currentInfo, [updatedItemName]: e.currentTarget.value });
+    const newData = validator(e.currentTarget.value) ? e.currentTarget.value : "";
+    const updatedItem = { ...currentInfo, [updatedItemName]: newData };
+    if (JSON.stringify(currentInfo) !== JSON.stringify(updatedItem))
+      setItem(updatedItem);
   }
 
   return (

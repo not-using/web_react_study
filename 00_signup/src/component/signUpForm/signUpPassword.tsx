@@ -13,11 +13,11 @@ const SignUpPassword :React.FC<ItemProps> = ({currentInfo, setItem}) => {
     setValid(passwordValidator(e.currentTarget.value));
   }
   const onBlurPassword = (e:React.ChangeEvent<HTMLInputElement>) => {
-    if (passwordValidator(e.currentTarget.value))
-      setItem({ ...currentInfo, password: e.currentTarget.value });
-    else if (currentInfo.password)
-      setItem({ ...currentInfo, password: "" })
-  }
+    const newData = passwordValidator(e.currentTarget.value) ? e.currentTarget.value : "";
+    const updatedItem = { ...currentInfo, password: newData };
+    if (JSON.stringify(currentInfo) !== JSON.stringify(updatedItem))
+      setItem(updatedItem)
+    }
   
   const [equal, setEqual] = useState(true);
   const onChangePwCheck = (e:React.ChangeEvent<HTMLInputElement>) => {
