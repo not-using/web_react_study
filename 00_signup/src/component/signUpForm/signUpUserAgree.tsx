@@ -56,7 +56,7 @@ const SignUpUserAgree:React.FC<signUpAgreeProps> = ({currentInfo, setItem}) => {
         <p>※ 서비스 약관 동의 (필수)
         
         <label htmlFor='all' className='sign-agree__all'>
-          <input type='checkbox' id='all' checked={termAgree && privacyAgree && marketingAgree} onChange={allChecked}/>모두 동의
+          <input type='checkbox' id='all' checked={termAgree && privacyAgree && marketingAgree} onChange={allChecked} required/>모두 동의
           </label>
           </p> 
         <label htmlFor='term' className='sign-agree__check'>

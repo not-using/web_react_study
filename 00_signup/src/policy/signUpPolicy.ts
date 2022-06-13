@@ -1,9 +1,9 @@
 import { user } from '../type/userInfo'
 
-const emailReg = RegExp(/(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))/);
-const passwordReg = RegExp(/(?=.*[A-Za-z])(?=.*\d)(?=.*[$@$!%*#?&])[A-Za-z\d$@$!%*#?&]{8,42}/);
-const phoneReg = RegExp(/(010[0-9]{7,8})/);
-const userNameReg = RegExp(/[a-z|A-Z]{2,10}/)
+export const emailReg = RegExp(/(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))/);
+export const passwordReg = RegExp(/(?=.*[A-Za-z])(?=.*\d)(?=.*[$@$!%*#?&])[A-Za-z\d$@$!%*#?&]{8,42}/);
+export const phoneReg = RegExp(/(010[0-9]{7,8})/);
+export const userNameReg = RegExp(/[a-z|A-Z]{2,10}/)
 
 export const emailValidator = (email: string) => {
   return emailReg.test(email);

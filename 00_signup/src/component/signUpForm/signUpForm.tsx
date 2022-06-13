@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import { emailValidator, signUpSubmitValidator, userNameValidator, phoneValidator } from '../../policy/signUpPolicy'
+import { emailReg, phoneReg, userNameReg, signUpSubmitValidator } from '../../policy/signUpPolicy'
 import SignUpInput from './signUpInput'
 import SignUpPassword from './signUpPassword'
 import SignUpUserAgree from './signUpUserAgree'
@@ -25,7 +25,7 @@ const SignUpForm: React.FC<signupFormProps> = ({setName}) => {
     if (signUpSubmitValidator(userInfo))
       setName(userInfo.userName);
   }
-
+  
   return (
     <form onSubmit={onSignUp}>
       <SignUpInput 
@@ -33,8 +33,9 @@ const SignUpForm: React.FC<signupFormProps> = ({setName}) => {
         currentInfo={userInfo} 
         updatedItemName='email' 
         setItem={setUserInfo} 
-        validator={emailValidator} 
-        errorMessage='이메일 형식이 맞지 않습니다' 
+        pattern={emailReg} 
+        errorMessage='이메일 형식이 맞지 않습니다'
+        isRequired={true}
       />
       <SignUpPassword
         currentInfo={userInfo}
@@ -45,30 +46,36 @@ const SignUpForm: React.FC<signupFormProps> = ({setName}) => {
         currentInfo={userInfo} 
         updatedItemName='phone' 
         setItem={setUserInfo} 
-        validator={phoneValidator} 
-        errorMessage='연락처 형식이 맞지 않습니다' 
+        pattern={phoneReg} 
+        errorMessage='010으로 시작하는 휴대폰번호 숫자만 입력해주세요' 
+        isRequired={true}
       />
       <SignUpInput 
         title='유저이름'
         currentInfo={userInfo} 
         updatedItemName='userName' 
         setItem={setUserInfo} 
-        validator={userNameValidator} 
-        errorMessage='유저이름 형식이 맞지 않습니다' 
+        pattern={userNameReg} 
+        errorMessage='2~10자 사이의 영문자만 가능합니다' 
+        isRequired={true}
       />
       <SignUpInput 
         title='추천인 (선택)'
         currentInfo={userInfo} 
         updatedItemName='recommender' 
         setItem={setUserInfo} 
-        validator={userNameValidator} 
-        errorMessage='유저이름 형식이 맞지 않습니다' 
+        pattern={userNameReg} 
+        errorMessage='2~10자 사이의 영문자만 가능합니다' 
+        isRequired={false}
       />
       <SignUpUserAgree
         currentInfo={userInfo}
         setItem={setUserInfo}
       />
-      <input type='submit' className='sign-up__submit'></input>
+      <input 
+        type='submit' 
+        className={`sign-up__submit ${signUpSubmitValidator(userInfo) && 'valid'}`}
+      />
     </form>
   )
 }

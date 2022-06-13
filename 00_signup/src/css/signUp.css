@@ -23,4 +23,12 @@
   margin: auto;
   height: 30px;
   width: 100px;
+  background-color: #eeeeee;
+  color:grey;
+  border:0;
+}
+
+.sign-up__submit.valid {
+  background-color:dodgerblue;
+  color:white;
 }

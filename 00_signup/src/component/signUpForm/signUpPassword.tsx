@@ -1,6 +1,8 @@
 import React, { useState } from 'react'
 import { user } from '../../type/userInfo'
-import { passwordValidator } from '../../policy/signUpPolicy'
+import { passwordReg, passwordValidator } from '../../policy/signUpPolicy'
+
+const passwordErrorMessage = `영문자 및 숫자, 특수문자 포함 8 ~ 42자로 설정해주세요`;
 
 type ItemProps = {
   currentInfo: user;
@@ -11,6 +13,10 @@ const SignUpPassword :React.FC<ItemProps> = ({currentInfo, setItem}) => {
   const [valid, setValid] = useState(true);
   const onChangePassword = (e:React.ChangeEvent<HTMLInputElement>) =>{
     setValid(passwordValidator(e.currentTarget.value));
+  }
+  const onFocusPassword = (e:React.ChangeEvent<HTMLInputElement>) => {
+    if (e.currentTarget.validity.patternMismatch)
+      e.currentTarget.setCustomValidity(passwordErrorMessage);
   }
   const onBlurPassword = (e:React.ChangeEvent<HTMLInputElement>) => {
     const newData = passwordValidator(e.currentTarget.value) ? e.currentTarget.value : "";
@@ -36,20 +42,24 @@ const SignUpPassword :React.FC<ItemProps> = ({currentInfo, setItem}) => {
         <input 
           id='password'
           type='password' 
-          className='sign-input__box' 
+          className='sign-input__box'
+          pattern={passwordReg.source}
           onChange={onChangePassword}
+          onFocus={onFocusPassword}
           onBlur={onBlurPassword}
+          required
         />
-        {!valid && <label className='sign-input__error' htmlFor='password'>영문자 및 숫자, 특수문자 포함 8 ~ 42자로 설정해주세요</label>}
+        {!valid && <label className='sign-input__error' htmlFor='password'>{passwordErrorMessage}</label>}
       </div>
       <div className='sign-input'>
         <label className='sign-input__title' htmlFor='pwCheck'>비밀번호 확인</label>
         <input 
-          type='password' 
           id='pwCheck'
+          type='password' 
           className='sign-input__box' 
           onChange={onChangePwCheck} 
           onBlur={onBlurPwCheck} 
+          required
         />
         {!equal && <label className='sign-input__error' htmlFor='pwCheck'>비밀번호와 일치하지 않습니다</label>}
       </div>
