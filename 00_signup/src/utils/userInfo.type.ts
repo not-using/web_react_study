@@ -6,6 +6,6 @@ export type user = {
   userName: string;
   phone: string;
   recommender: string;
-  agreement1: boolean;
-  agreement2: boolean;
+  requiredAgreement: boolean;
+  optionalAgreement: boolean;
 }
